@@ -1,0 +1,71 @@
+= !TopMacro =
+
+TopMacro is exceedingly simple, like all good software ;-). In a nutshell, it
+does exactly what you think it would, inserts a "top of page" link in your Wiki
+page. The only option is a string that is inserted into the content of the markup.
+This defaults to a single circumflex "!^" character (more commonly known as a caret),
+surrounded by square brackets. The anchor element returned includes a "Top of Page"
+title attribute so the user knows its purpose, and a "topofpage" class so the Wiki
+author may style it in any way they please.
+
+{{{
+[[Top]] becomes:
+
+[<a href="#" class="topofpage" title="Top of page">^</a>]
+}}}
+
+You could of course achieve the same effect by doing this:
+
+{{{
+{{{
+#!html
+[<a href="#" class="topofpage" title="Top of page">^</a>]
+}}}
+}}}
+
+Resulting in this:
+
+{{{
+#!html
+[<a href="#" class="topofpage" title="Top of page">^</a>]
+}}}
+
+But who wants to do all that typing? That's what [http://en.wikipedia.org/wiki/Macro_(computer_science) macros]
+are for after all. Note that the brackets do not form part of the anchor itself.
+That is a personal preference. If you pass a string to the macro they are ommited.
+
+== Installation ==
+
+{{{
+python setup.py bdist_egg
+cp dist/*.egg /trac/env/Project/plugins
+}}}
+
+== Configuration ==
+
+Enable the macro in:
+
+/trac/env/Project/conf/trac.ini:
+
+{{{
+[components]
+top.* = enabled
+}}}
+
+Then restart you Web server.
+
+== Examples ==
+
+{{{
+[[Top]]
+[[Top(top)]]
+[[Top(Top of page)]]
+}}}
+
+== Source ==
+
+Browse the source at: [http://github.com/dwclifton/tracinigetmacro/tree/master GitHub][[BR]]
+Public clone URL:
+{{{
+git clone git://github.com/dwclifton/topmacro.git
+}}}
