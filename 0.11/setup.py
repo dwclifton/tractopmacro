@@ -16,7 +16,7 @@ setup(
     url = 'http://trac-hacks.org/wiki/TopMacro',
     license = 'BSD',
 
-    entry_points = { 'trac.plugins': [ 'top.macro = top.macro' ],
+    entry_points = { 'trac.plugins': [ 'top.macro = top.macro' ] },
     classifiers = ['Framework :: Trac'],
     install_requires = ['Trac']
 )
