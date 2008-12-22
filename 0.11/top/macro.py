@@ -6,7 +6,7 @@
 
     @author Douglas Clifton <dwclifton@gmail.com>
     @date December, 2008
-    @version 0.11.0
+    @version 0.11.1
 """
 
 from trac.core import *
@@ -19,7 +19,7 @@ __all__ = ['TopMacro']
 class TopMacro(WikiMacroBase):
 
     def expand_macro(self, formatter, name, args):
-        """ Return a top of page anchor element."""
+        """Return a top of page anchor element."""
 
         prefix  = '['
         content = '^'
@@ -36,7 +36,9 @@ class TopMacro(WikiMacroBase):
         class_ = 'topofpage'
         title  = 'Top of page'
 
-        return tag.span(prefix,
-                        tag.a(content, href='#', title='%s' % title),
-                        suffix,
-                        class_='%s' % class_)
+        return tag(prefix,
+                   tag.a(content,
+                         class_='%s' % class_,
+                         href='#',
+                         title='%s' % title),
+                   suffix)

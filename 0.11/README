@@ -1,17 +1,17 @@
 = !TopMacro =
 
 TopMacro is exceedingly simple, like all good software ;-). In a nutshell, it
-does exactly what you think it would, inserts a "top of page" link in your Wiki
-page. The only option is a string that is inserted into the content of the markup.
-This defaults to a single circumflex "!^" character (more commonly known as a caret),
+does exactly what you'd expect, inserts a "top of page" link in your Wiki page.
+The only option is a string that is inserted into the content of the markup. This
+defaults to a single circumflex "!^" character (more commonly known as a caret),
 surrounded by square brackets. The anchor element returned includes a "Top of Page"
-title attribute so the user knows its purpose, and a "topofpage" class so the Wiki
-author may style it in any way they please.
+title attribute so the user knows its purpose, and a "topofpage" class so the
+Wiki author may apply their preferred style rules.
 
 {{{
-[[Top]] becomes:
+[[Top]] returns:
 
-[<span class="topofpage"><a href="#" title="Top of page">^</a></span>]
+[<a class="topofpage" href="#" title="Top of page">^</a>]
 }}}
 
 You could of course achieve the same effect by doing this:
@@ -34,35 +34,50 @@ But who wants to do all that typing?
 
 That's what [http://en.wikipedia.org/wiki/Macro_(computer_science) macros] are for
 after all. Note that the brackets do not form part of the anchor itself. That is a
-personal preference. If you pass a string to the macro they are ommited.
+personal preference. If you pass a string to the macro they are omitted.
 
 == Styling ==
 
 If you like the caret, but prefer to omit the brackets and style the link yourself
-with CSS, try this:
+with CSS, try something like this:
 
 {{{
-[[Top(^)]]
+a.topofpage {
+  display: block;
+  height: 11px;
+  width: 11px;
+  font-family: 'BitStream Vera Sans',Verdana,Arial,Helvetica,sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #eaeaea;
+  color: #e9611c;
+  padding: 1px 2px 2px;
+  border: 1px solid #c6c7db;
+  margin-left: -6px;
+}
+a.topofpage:hover {
+  border-color: #000;
+  background-color: #777;
+  color: #fc3;
+}
 }}}
 
 {{{
-.topofpage {
-  background-color: #eaeaea;
-  color: #eff5f16;
-  padding: 2px 4px 0;
-  border: 1px solid #c6c7db;
-}
+[[Top(^)]]
 }}}
 
 Resulting in:
 
 [[Top(^)]]
 
-Note that if you're going to style the anchor like this you should really pass an
-argument to the macro or you'll end up with the default brackets in addition to
-the styling.
+Note that if you're going to style the anchor like this you should really pass an argument
+to the macro or you'll end up with the default brackets in addition to the styling.
 
 == Installation ==
+
+Download the zipped source from [/raw-attachment/wiki/TopMacro/topmacro.zip here] or on
+[http://trac-hacks.org/attachment/wiki/TopMacro/topmacro.zip?format=raw Trac Hacks]. Unzip
+the archive to a temporary location, visit the 0.11 directory and run:
 
 {{{
 python setup.py bdist_egg
@@ -93,7 +108,7 @@ You may need to restart your Web server.
 
 == Source ==
 
- * Browse the source at: [http://github.com/dwclifton/tractopmacro/tree/master GitHub]
+ * Browse the source at: [http://github.com/dwclifton/tractopmacro/tree/master/0.11 GitHub].
  * Public clone URL:
 {{{
 git clone git@github.com:dwclifton/tractopmacro.git
