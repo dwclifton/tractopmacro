@@ -11,7 +11,7 @@ author may style it in any way they please.
 {{{
 [[Top]] becomes:
 
-[<a href="#" class="topofpage" title="Top of page">^</a>]
+[<span class="topofpage"><a href="#" title="Top of page">^</a></span>]
 }}}
 
 You could of course achieve the same effect by doing this:
@@ -19,7 +19,7 @@ You could of course achieve the same effect by doing this:
 {{{
 {{{
 #!html
-[<a href="#" class="topofpage" title="Top of page">^</a>]
+[<a href="#" title="Top of page">^</a>]
 }}}
 }}}
 
@@ -27,12 +27,40 @@ Resulting in this:
 
 {{{
 #!html
-[<a href="#" class="topofpage" title="Top of page">^</a>]
+[<a href="#" title="Top of page">^</a>]
 }}}
 
-But who wants to do all that typing? That's what [http://en.wikipedia.org/wiki/Macro_(computer_science) macros]
-are for after all. Note that the brackets do not form part of the anchor itself.
-That is a personal preference. If you pass a string to the macro they are ommited.
+But who wants to do all that typing?
+
+That's what [http://en.wikipedia.org/wiki/Macro_(computer_science) macros] are for
+after all. Note that the brackets do not form part of the anchor itself. That is a
+personal preference. If you pass a string to the macro they are ommited.
+
+== Styling ==
+
+If you like the caret, but prefer to omit the brackets and style the link yourself
+with CSS, try this:
+
+{{{
+[[Top(^)]]
+}}}
+
+{{{
+.topofpage {
+  background-color: #eaeaea;
+  color: #eff5f16;
+  padding: 2px 4px 0;
+  border: 1px solid #c6c7db;
+}
+}}}
+
+Resulting in:
+
+[[Top(^)]]
+
+Note that if you're going to style the anchor like this you should really pass an
+argument to the macro or you'll end up with the default brackets in addition to
+the styling.
 
 == Installation ==
 
@@ -52,20 +80,21 @@ Enable the macro in:
 top.* = enabled
 }}}
 
-Then restart you Web server.
+You may need to restart your Web server.
 
 == Examples ==
 
 {{{
 [[Top]]
+[[Top(^)]]
 [[Top(top)]]
 [[Top(Top of page)]]
 }}}
 
 == Source ==
 
-Browse the source at: [http://github.com/dwclifton/tracinigetmacro/tree/master GitHub][[BR]]
-Public clone URL:
+ * Browse the source at: [http://github.com/dwclifton/tractopmacro/tree/master GitHub]
+ * Public clone URL:
 {{{
-git clone git://github.com/dwclifton/topmacro.git
+git clone git@github.com:dwclifton/tractopmacro.git
 }}}
